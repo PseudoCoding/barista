@@ -2,7 +2,23 @@ ARG REPO=""
 ARG TAG=compose
 ARG BARISTA_VERSION=unspecified
 
-FROM ${REPO}barista-base:${TAG}
+ARG TAG="12.16.1"
+FROM ${REPO}node:${TAG}
+#FROM ${REPO}barista-base:${TAG}
+
+# Create app directory
+WORKDIR /usr/src/app
+ENV HOME=/usr/src/app
+
+RUN rm -fr barista-scan barista-web barista-api  doc
+
+
+RUN mkdir -p -v -m 770 .config /.config /.cache/yarn  && chown root:root /.cache /.cache/yarn /.config .config\
+    && chmod -R g+rw . && chmod -R g+rwx .config /.config
+
+#Install JAVA
+RUN apt-get update && apt install -y openjdk-8-jre-headless
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 ADD tools/docker-entrypoint.ksh /docker-entrypoint.ksh
 ARG MAVEN_VERSION=3.6.1
