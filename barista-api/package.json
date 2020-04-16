@@ -79,6 +79,7 @@
     "@nestjsx/crud-typeorm": "^4.4.2",
     "@types/bull": "^3.12.2",
     "@types/bull-arena": "^2.6.0",
+    "@types/express-serve-static-core": "^4.17.1",
     "@types/lodash": "^4.14.149",
     "@types/nodemailer": "^6.4.0",
     "@types/string-similarity": "^3.0.0",
