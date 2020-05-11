@@ -3,13 +3,12 @@
 # will inherit this dockerfile in order to reduce build time and reduce errors.
 ARG REPO=""
 ARG TAG="12.16-stretch-slim"
-FROM ${REPO}node:12.16-slim
+FROM ${REPO}node:12.16-stretch-slim
 LABEL maintainer=randy.olinger@optum.com
 
 # Create app directory
 WORKDIR /usr/src/app
 ENV HOME=/usr/src/app
-
 RUN rm -fr barista-scan barista-web barista-api  doc
 
 
@@ -17,7 +16,7 @@ RUN mkdir -p -v -m 770 .config /.config /.cache/yarn  && chown root:root /.cache
     && chmod -R g+rw . && chmod -R g+rwx .config /.config
 
 #Install JAVA
-RUN apt-get update && apt install -y openjdk-8-jre-headless
+RUN mkdir -p /usr/share/man/man1 && apt-get update && apt install -y openjdk-8-jre-headless
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 #Install Yarn
