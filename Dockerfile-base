@@ -3,7 +3,7 @@
 # will inherit this dockerfile in order to reduce build time and reduce errors.
 ARG REPO=""
 ARG TAG="12.16-stretch-slim"
-FROM ${REPO}node:12.16-stretch-slim
+FROM ${REPO}node:14.2.0-stretch-slim
 LABEL maintainer=randy.olinger@optum.com
 
 # Create app directory
