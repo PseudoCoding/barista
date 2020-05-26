@@ -1,7 +1,7 @@
 ARG BASETAG=compose
 ARG REPO=""
 
-FROM golang:1.13 as go
+FROM golang:1.14 as go
 
 FROM ${REPO}barista-scanbase:${BASETAG}
 ADD tools/docker-entrypoint.ksh /docker-entrypoint.ksh
